@@ -862,7 +862,7 @@ color: #000000;
   display: inline-block;
   margin: 0 10px;
   /* Basic sketch-like styling - can be enhanced with SVG filters or custom fonts */
-  filter: drop_shadow(2px 2px 0px rgba(251, 251, 251, 0.645));
+  filter: drop-shadow(2px 2px 0px rgba(251, 251, 251, 0.645));
   transform: rotate(calc(var(--rotation) * 1deg));
   animation: floatEmoji 4s ease-in-out infinite;
 }
@@ -950,7 +950,7 @@ color: #000000;
 }
 .logo-piece:hover {
   transform: scale(1.1);
-  filter: drop_shadow(0 15px 30px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 .theme-switcher {
