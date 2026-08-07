@@ -1084,16 +1084,18 @@ section {
 }
 
 .logo-piece {
-  width: 250px;
-  max-width: 40vw;
+  height: 55px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)) grayscale(30%);
   opacity: 0.85;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .logo-piece:hover {
-  transform: scale(1.05) translateY(-5px);
-  filter: drop-shadow(0 15px 30px rgba(255, 215, 0, 0.2)) grayscale(0%);
+  transform: scale(1.08) translateY(-3px);
+  filter: drop-shadow(0 15px 30px rgba(255, 215, 0, 0.25)) grayscale(0%);
   opacity: 1;
 }
 
