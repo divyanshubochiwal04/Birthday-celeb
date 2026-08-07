@@ -656,36 +656,22 @@
       if (!logosSection) return;
 
       // Set initial state via GSAP
-      gsap.set(".logo-piece", { opacity: 0, y: 40 });
+      gsap.set(".logo-piece", { opacity: 0, y: 50 });
 
-      // Viewport check to handle load/refresh at the bottom of the page
-      const rect = logosSection.getBoundingClientRect();
-      const isInViewport = (rect.top < window.innerHeight && rect.bottom >= 0);
-
-      if (isInViewport) {
-        // If already on screen, play animation immediately
-        gsap.to(".logo-piece", {
-          opacity: 1,
-          y: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-      } else {
-        // Otherwise, trigger on scroll
-        gsap.to(".logo-piece", {
-          scrollTrigger: {
-            trigger: logosSection,
-            start: "top 95%",
-            toggleActions: "play none none none"
-          },
-          opacity: 1,
-          y: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-      }
+      // Animate progress linked directly to scrollbar (time-independent, scroll-dependent)
+      gsap.to(".logo-piece", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.08,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: logosSection,
+          start: "top bottom-=10%", // starts when top of logos is 10% above screen bottom
+          end: "top center+=20%",  // fully revealed by center+20%
+          scrub: 1.2,              // smooth scrubbing delay for natural weight
+          invalidateOnRefresh: true
+        }
+      });
     },
 
     /**
