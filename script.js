@@ -37,6 +37,13 @@
       this.initWishes();
       this.initFinale();
       this.initAOS();
+
+      // Refresh ScrollTrigger calculations after DOM is fully resolved
+      setTimeout(() => {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      }, 300);
     },
 
     /**
@@ -651,11 +658,11 @@
       gsap.from(".logo-piece", {
         scrollTrigger: {
           trigger: logosSection,
-          start: "top 85%",
+          start: "top 95%", // triggers as soon as the section top crosses 95% of screen height
           once: true
         },
         opacity: 0,
-        y: 30,
+        y: 40,
         stagger: 0.1,
         duration: 0.8,
         ease: "power2.out"
