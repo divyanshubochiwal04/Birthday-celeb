@@ -1045,14 +1045,14 @@ section {
 
 /* BRAND LOGO SCROLLER - Center-Aligned Slides */
 .logos-section {
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 1.5rem;
-  background: radial-gradient(circle at center, #0f0a20 0%, var(--bg-deep) 100%);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+  box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.03), inset 0 -15px 30px rgba(0, 0, 0, 0.03);
 }
 
 .logos-inner {
@@ -1065,13 +1065,13 @@ section {
 }
 
 .logos-section .section-title {
-  color: #ffffff;
-  -webkit-text-fill-color: initial;
+  color: #110d26 !important;
+  -webkit-text-fill-color: #110d26 !important;
   background: none;
 }
 
 .logos-section .section-tagline {
-  color: #a0a5b8;
+  color: #555b70 !important;
 }
 
 .logos-stage {
@@ -1080,7 +1080,7 @@ section {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
 }
 
 .logo-piece {
@@ -1088,15 +1088,13 @@ section {
   width: auto;
   max-width: 180px;
   object-fit: contain;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)) grayscale(30%);
-  opacity: 0.85;
+  filter: grayscale(100%) opacity(0.65);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .logo-piece:hover {
   transform: scale(1.08) translateY(-3px);
-  filter: drop-shadow(0 15px 30px rgba(255, 215, 0, 0.25)) grayscale(0%);
-  opacity: 1;
+  filter: grayscale(0%) opacity(1) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
 }
 
 /* GLASS PANE TRANSITION */
