@@ -648,18 +648,16 @@
       const logosSection = document.querySelector(".logos-section");
       if (!logosSection) return;
 
-      gsap.timeline({
+      gsap.from(".logo-piece", {
         scrollTrigger: {
           trigger: logosSection,
-          start: "top 90%",
-          toggleActions: "play none none reverse"
-        }
-      })
-      .from(".logo-piece", {
+          start: "top 85%",
+          once: true
+        },
         opacity: 0,
-        y: '5vh',
-        stagger: 0.15,
-        duration: 0.9,
+        y: 30,
+        stagger: 0.1,
+        duration: 0.8,
         ease: "power2.out"
       });
     },
