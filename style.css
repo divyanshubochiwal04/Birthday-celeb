@@ -85,7 +85,7 @@ section {
 .section-tagline {
   text-align: center;
   max-width: 650px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2.5rem;
   color: #a0a5b8;
   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   font-weight: 300;
@@ -323,10 +323,11 @@ section {
   position: relative;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5rem 1.5rem;
+  padding: 4rem 1.5rem;
 }
 
 .hero-overlay {
@@ -340,6 +341,9 @@ section {
   position: relative;
   z-index: 2;
   max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Hero Portrait Double Border */
@@ -456,9 +460,14 @@ section {
 .doodle-4 { bottom: 10%; right: 20%; width: 90px; height: 90px; }
 .doodle-5 { top: 50%; left: 50%; width: 55px; height: 55px; transform: translate(-50%, -50%); }
 
-/* PORTRAITS SECTION */
+/* PORTRAITS SECTION - Center-Aligned Slides */
 .portraits-section {
-  padding: 7rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
   background: radial-gradient(circle at 10% 0, #0a0618 0%, var(--bg-deep) 100%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
@@ -466,13 +475,16 @@ section {
 .portraits-inner {
   max-width: 1100px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
 }
 
 .portrait-img {
-  width: 100%;
+  width: 180px;
   aspect-ratio: 4/5;
   border-radius: 24px;
   object-fit: cover;
@@ -486,9 +498,14 @@ section {
   border-color: rgba(255, 215, 0, 0.3);
 }
 
-/* TIMELINE SECTION */
+/* TIMELINE SECTION - Center-Aligned Slides */
 .timeline-section {
-  padding: 7rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
   background: radial-gradient(circle at bottom, #0f0a24 0%, var(--bg-deep) 100%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
@@ -496,11 +513,12 @@ section {
 .timeline-inner {
   max-width: 1100px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .timeline-wrapper {
   position: relative;
-  margin-top: 3.5rem;
+  margin-top: 2rem;
   padding: 1rem 0;
 }
 
@@ -530,16 +548,16 @@ section {
 
 .timeline-card {
   position: relative;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   width: 100%;
 }
 
 .timeline-dot {
   position: absolute;
   left: 50%;
-  top: 1.5rem;
-  width: 18px;
-  height: 18px;
+  top: 1.2rem;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--bg-deep);
   border: 3px solid rgba(255, 255, 255, 0.2);
@@ -556,7 +574,7 @@ section {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: 1.8rem 2.2rem;
+  padding: 1.2rem 1.8rem;
   box-shadow: var(--glass-shadow), var(--glass-inset);
   width: 45%;
   position: relative;
@@ -577,29 +595,29 @@ section {
 
 .timeline-year {
   font-family: var(--font-sans);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   background: linear-gradient(135deg, var(--gold), var(--accent-orange));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .timeline-heading {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.02em;
 }
 
 .timeline-text {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: #b1b5c6;
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
   font-weight: 300;
 }
@@ -639,9 +657,14 @@ section {
   }
 }
 
-/* DOMAINS SECTION */
+/* DOMAINS SECTION - Center-Aligned Slides */
 .domains-section {
-  padding: 7rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
   background: radial-gradient(circle at center, #100624 0%, var(--bg-deep) 100%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
@@ -649,13 +672,18 @@ section {
 .domains-inner {
   max-width: 1100px;
   margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .domains-grid {
-  margin-top: 3.5rem;
+  margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
 }
 
 /* Domain Glassmorphic Cards */
@@ -728,16 +756,34 @@ section {
   font-weight: 300;
 }
 
-/* WISHES & DIARY SECTION */
+/* WISHES & DIARY SECTION - Center-Aligned Slides */
 .wishes-section {
-  padding: 7rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
   background: radial-gradient(circle at center, #1b0c2a 0%, var(--bg-deep) 100%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+.wishes-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 .book-container {
   perspective: 150vw;
-  margin-top: 3.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .book {
@@ -884,11 +930,26 @@ section {
   text-indent: 0;
 }
 
-/* FINALE & CREDITS */
+/* FINALE & CREDITS - Center-Aligned Slides */
 .finale-section {
-  padding: 7rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
   background: radial-gradient(circle at center, #1b0a2c 0%, var(--bg-deep) 100%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.finale-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .finale-title {
@@ -920,8 +981,13 @@ section {
   filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
 }
 
-/* THANK YOU SECTION */
+/* THANK YOU SECTION - Center-Aligned Slides */
 .thankyou-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 4rem 1.5rem;
   background-color: var(--bg-deep);
   color: #ffffff;
@@ -931,6 +997,11 @@ section {
 .thankyou-inner {
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .thankyou-section .section-title {
@@ -972,9 +1043,14 @@ section {
   100% { transform: translateY(0) rotate(calc(var(--rotation) * 1deg)); }
 }
 
-/* BRAND LOGO SCROLLER */
+/* BRAND LOGO SCROLLER - Center-Aligned Slides */
 .logos-section {
-  padding: 6rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
   background: radial-gradient(circle at center, #0f0a20 0%, var(--bg-deep) 100%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
@@ -985,6 +1061,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .logos-section .section-title {

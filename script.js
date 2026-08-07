@@ -16,6 +16,9 @@
       activeFloatAnimations: []
     },
 
+    // Bound reference for listener removal
+    _boundKill: null,
+
     // Initialization lifecycle
     init() {
       // 1. Verify and register GreenSock Plugins
@@ -189,6 +192,36 @@
     },
 
     /**
+     * Scroll Listeners Management
+     */
+    addScrollListeners() {
+      this._boundKill = this.killAutoScroll.bind(this);
+      window.addEventListener("wheel", this._boundKill, { passive: true });
+      window.addEventListener("touchstart", this._boundKill, { passive: true });
+    },
+
+    removeScrollListeners() {
+      if (this._boundKill) {
+        window.removeEventListener("wheel", this._boundKill);
+        window.removeEventListener("touchstart", this._boundKill);
+      }
+    },
+
+    /**
+     * Safely interrupts active auto scroll timeline
+     */
+    killAutoScroll() {
+      if (this.state.isAutoScrolling) {
+        this.state.isAutoScrolling = false;
+        if (this.state.storyTimeline) {
+          this.state.storyTimeline.kill();
+        }
+        document.body.classList.remove("scrolling");
+        this.removeScrollListeners();
+      }
+    },
+
+    /**
      * Cinematic Auto-Scroll Control Lifecycle
      */
     startStoryScroll() {
@@ -201,37 +234,14 @@
       const tl = gsap.timeline({
         defaults: { ease: "power1.inOut" },
         onComplete: () => {
-          cleanUpScroll();
+          this.state.isAutoScrolling = false;
+          document.body.classList.remove("scrolling");
+          this.removeScrollListeners();
         }
       });
       this.state.storyTimeline = tl;
 
-      const killAutoScroll = () => {
-        if (this.state.isAutoScrolling) {
-          this.state.isAutoScrolling = false;
-          if (this.state.storyTimeline) this.state.storyTimeline.kill();
-          document.body.classList.remove("scrolling");
-          removeEventListeners();
-        }
-      };
-
-      const addEventListeners = () => {
-        window.addEventListener("wheel", killAutoScroll, { passive: true });
-        window.addEventListener("touchstart", killAutoScroll, { passive: true });
-      };
-
-      const removeEventListeners = () => {
-        window.removeEventListener("wheel", killAutoScroll);
-        window.removeEventListener("touchstart", killAutoScroll);
-      };
-
-      const cleanUpScroll = () => {
-        this.state.isAutoScrolling = false;
-        document.body.classList.remove("scrolling");
-        removeEventListeners();
-      };
-
-      addEventListeners();
+      this.addScrollListeners();
 
       sections.forEach((target) => {
         if (!this.state.isAutoScrolling) return;
@@ -419,13 +429,17 @@
       const cta = document.getElementById("cta-journey");
       if (cta) {
         cta.addEventListener("click", () => {
+          this.killAutoScroll(); // Safely stop auto-scroll timeline first!
           gsap.fromTo(
             cta,
             { scale: 1 },
             { scale: 0.95, duration: 0.15, yoyo: true, repeat: 1, ease: "power1.inOut" }
           );
-          const el = document.querySelector("#empire-timeline-1");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
+          gsap.to(window, {
+            duration: 1.2,
+            scrollTo: { y: "#empire-timeline-1", autoKill: true },
+            ease: "power2.out"
+          });
         }, { passive: true });
 
         // Hover micro-animations
