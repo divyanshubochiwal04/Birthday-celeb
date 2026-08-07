@@ -526,6 +526,27 @@
         );
       });
 
+      // Animate filling timeline progress line on scroll
+      const sections = document.querySelectorAll(".timeline-section");
+      sections.forEach((section) => {
+        const progressLine = section.querySelector(".timeline-line-progress");
+        if (!progressLine) return;
+
+        gsap.fromTo(progressLine,
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 70%",
+              end: "bottom 30%",
+              scrub: true
+            }
+          }
+        );
+      });
+
       // Blob Parallaxing
       [1, 2].forEach((num) => {
         const sign = num === 1 ? -1 : 1;
