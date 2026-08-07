@@ -655,18 +655,37 @@
       const logosSection = document.querySelector(".logos-section");
       if (!logosSection) return;
 
-      gsap.from(".logo-piece", {
-        scrollTrigger: {
-          trigger: logosSection,
-          start: "top 95%", // triggers as soon as the section top crosses 95% of screen height
-          once: true
-        },
-        opacity: 0,
-        y: 40,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out"
-      });
+      // Set initial state via GSAP
+      gsap.set(".logo-piece", { opacity: 0, y: 40 });
+
+      // Viewport check to handle load/refresh at the bottom of the page
+      const rect = logosSection.getBoundingClientRect();
+      const isInViewport = (rect.top < window.innerHeight && rect.bottom >= 0);
+
+      if (isInViewport) {
+        // If already on screen, play animation immediately
+        gsap.to(".logo-piece", {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      } else {
+        // Otherwise, trigger on scroll
+        gsap.to(".logo-piece", {
+          scrollTrigger: {
+            trigger: logosSection,
+            start: "top 95%",
+            toggleActions: "play none none none"
+          },
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      }
     },
 
     /**
