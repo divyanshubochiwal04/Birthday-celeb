@@ -930,6 +930,27 @@ section {
   text-indent: 0;
 }
 
+/* Mobile Responsiveness for Birthday Diary (Book) */
+@media (max-width: 768px) {
+  .book-container {
+    perspective: 250vw;
+  }
+  .book {
+    width: 82vw;
+    transform: translateX(25%) scale(0.58);
+  }
+  .book h2 {
+    font-size: 1.5rem; /* compensated for scale(0.58) */
+  }
+  .book p {
+    font-size: 1.1rem; /* compensated for scale(0.58) */
+    line-height: 1.4;
+  }
+  .book p.signature {
+    font-size: 2.5rem; /* compensated for scale(0.58) */
+  }
+}
+
 /* FINALE & CREDITS - Center-Aligned Slides */
 .finale-section {
   min-height: 100vh;
